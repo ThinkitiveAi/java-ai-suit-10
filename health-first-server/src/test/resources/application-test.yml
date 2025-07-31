@@ -1,0 +1,64 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: health-first-server-test
+  
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+    
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        
+  h2:
+    console:
+      enabled: false
+      
+  mail:
+    host: localhost
+    port: 2525
+    username: test
+    password: test
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+
+# JWT Configuration for testing
+app:
+  jwt:
+    secret: testSecretKey123456789testSecretKey123456789
+    expiration: 86400000 # 24 hours
+    refresh-expiration: 604800000 # 7 days
+    
+  rate-limit:
+    registration:
+      capacity: 100 # Higher limit for testing
+      refill-period: 60 # 1 minute
+      
+# Swagger Configuration
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+    
+# Logging
+logging:
+  level:
+    com.healthfirst: WARN
+    org.springframework.security: WARN
+    org.hibernate.SQL: WARN
+    root: WARN 

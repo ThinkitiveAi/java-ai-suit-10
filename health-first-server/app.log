@@ -1,0 +1,265 @@
+nohup: ignoring input
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m----------------< [0;36mcom.healthfirst:health-first-server[0;1m >-----------------[m
+[[1;34mINFO[m] [1mBuilding health-first-server 1.0.0[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m>>> [0;32mspring-boot-maven-plugin:3.2.0:run[m [1m(default-cli)[0;1m > [0;1mtest-compile[m @ [36mhealth-first-server[0;1m >>>[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mhealth-first-server[0;1m ---[m
+[[1;34mINFO[m] Copying 1 resource from src/main/resources to target/classes
+[[1;34mINFO[m] Copying 0 resource from src/main/resources to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:compile[m [1m(default-compile)[m @ [36mhealth-first-server[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mhealth-first-server[0;1m ---[m
+[[1;34mINFO[m] Copying 1 resource from src/test/resources to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:testCompile[m [1m(default-testCompile)[m @ [36mhealth-first-server[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m<<< [0;32mspring-boot-maven-plugin:3.2.0:run[m [1m(default-cli)[0;1m < [0;1mtest-compile[m @ [36mhealth-first-server[0;1m <<<[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspring-boot-maven-plugin:3.2.0:run[m [1m(default-cli)[m @ [36mhealth-first-server[0;1m ---[m
+[[1;34mINFO[m] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-07-31T14:44:16.725+05:30  INFO 46503 --- [health-first-server] [           main] c.h.HealthFirstServerApplication         : Starting HealthFirstServerApplication using Java 21.0.3 with PID 46503 (/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/target/classes started by ttpl-lnvl15-0294 in /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server)
+2025-07-31T14:44:16.726+05:30 DEBUG 46503 --- [health-first-server] [           main] c.h.HealthFirstServerApplication         : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-07-31T14:44:16.727+05:30  INFO 46503 --- [health-first-server] [           main] c.h.HealthFirstServerApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-07-31T14:44:17.179+05:30  INFO 46503 --- [health-first-server] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-31T14:44:17.207+05:30  INFO 46503 --- [health-first-server] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 2 JPA repository interfaces.
+2025-07-31T14:44:17.489+05:30  INFO 46503 --- [health-first-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-31T14:44:17.496+05:30  INFO 46503 --- [health-first-server] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-31T14:44:17.497+05:30  INFO 46503 --- [health-first-server] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-07-31T14:44:17.529+05:30  INFO 46503 --- [health-first-server] [           main] o.a.c.c.C.[.[localhost].[/api/v1]        : Initializing Spring embedded WebApplicationContext
+2025-07-31T14:44:17.530+05:30  INFO 46503 --- [health-first-server] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 773 ms
+2025-07-31T14:44:17.552+05:30  INFO 46503 --- [health-first-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-31T14:44:17.661+05:30  INFO 46503 --- [health-first-server] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-07-31T14:44:17.662+05:30  INFO 46503 --- [health-first-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-31T14:44:17.672+05:30  INFO 46503 --- [health-first-server] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-31T14:44:17.733+05:30  INFO 46503 --- [health-first-server] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-31T14:44:17.755+05:30  INFO 46503 --- [health-first-server] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-07-31T14:44:17.771+05:30  INFO 46503 --- [health-first-server] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-31T14:44:17.874+05:30  INFO 46503 --- [health-first-server] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-31T14:44:17.893+05:30  WARN 46503 --- [health-first-server] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-31T14:44:18.307+05:30  INFO 46503 --- [health-first-server] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-31T14:44:18.331+05:30 DEBUG 46503 --- [health-first-server] [           main] org.hibernate.SQL                        : 
+    create table providers (
+        id BINARY(16) not null,
+        account_locked_until timestamp(6),
+        city varchar(100) not null,
+        state varchar(50) not null,
+        street varchar(200) not null,
+        zip varchar(10) not null,
+        created_at timestamp(6) not null,
+        email varchar(100) not null,
+        failed_login_attempts integer not null,
+        first_name varchar(50) not null,
+        is_active boolean not null,
+        last_name varchar(50) not null,
+        last_successful_login timestamp(6),
+        license_document_url varchar(255),
+        license_number varchar(50) not null,
+        password_hash varchar(255) not null,
+        phone_number varchar(20) not null,
+        specialization varchar(100) not null,
+        updated_at timestamp(6),
+        verification_status varchar(255) not null check (verification_status in ('PENDING','VERIFIED','REJECTED')),
+        years_of_experience integer not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table providers (
+        id BINARY(16) not null,
+        account_locked_until timestamp(6),
+        city varchar(100) not null,
+        state varchar(50) not null,
+        street varchar(200) not null,
+        zip varchar(10) not null,
+        created_at timestamp(6) not null,
+        email varchar(100) not null,
+        failed_login_attempts integer not null,
+        first_name varchar(50) not null,
+        is_active boolean not null,
+        last_name varchar(50) not null,
+        last_successful_login timestamp(6),
+        license_document_url varchar(255),
+        license_number varchar(50) not null,
+        password_hash varchar(255) not null,
+        phone_number varchar(20) not null,
+        specialization varchar(100) not null,
+        updated_at timestamp(6),
+        verification_status varchar(255) not null check (verification_status in ('PENDING','VERIFIED','REJECTED')),
+        years_of_experience integer not null,
+        primary key (id)
+    )
+2025-07-31T14:44:18.336+05:30 DEBUG 46503 --- [health-first-server] [           main] org.hibernate.SQL                        : 
+    create table refresh_tokens (
+        id BINARY(16) not null,
+        created_at timestamp(6) not null,
+        expires_at timestamp(6) not null,
+        ip_address varchar(45),
+        is_revoked boolean not null,
+        last_used_at timestamp(6),
+        token_hash varchar(255) not null,
+        user_agent varchar(500),
+        provider_id BINARY(16) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table refresh_tokens (
+        id BINARY(16) not null,
+        created_at timestamp(6) not null,
+        expires_at timestamp(6) not null,
+        ip_address varchar(45),
+        is_revoked boolean not null,
+        last_used_at timestamp(6),
+        token_hash varchar(255) not null,
+        user_agent varchar(500),
+        provider_id BINARY(16) not null,
+        primary key (id)
+    )
+2025-07-31T14:44:18.337+05:30 DEBUG 46503 --- [health-first-server] [           main] org.hibernate.SQL                        : 
+    alter table if exists providers 
+       drop constraint if exists UK_7ant8u8y5lel5bd0d6hdexmde
+Hibernate: 
+    alter table if exists providers 
+       drop constraint if exists UK_7ant8u8y5lel5bd0d6hdexmde
+2025-07-31T14:44:18.337+05:30 DEBUG 46503 --- [health-first-server] [           main] org.hibernate.SQL                        : 
+    alter table if exists providers 
+       add constraint UK_7ant8u8y5lel5bd0d6hdexmde unique (email)
+Hibernate: 
+    alter table if exists providers 
+       add constraint UK_7ant8u8y5lel5bd0d6hdexmde unique (email)
+2025-07-31T14:44:18.338+05:30 DEBUG 46503 --- [health-first-server] [           main] org.hibernate.SQL                        : 
+    alter table if exists providers 
+       drop constraint if exists UK_m88q644diroxroq42ujiisbl3
+Hibernate: 
+    alter table if exists providers 
+       drop constraint if exists UK_m88q644diroxroq42ujiisbl3
+2025-07-31T14:44:18.338+05:30 DEBUG 46503 --- [health-first-server] [           main] org.hibernate.SQL                        : 
+    alter table if exists providers 
+       add constraint UK_m88q644diroxroq42ujiisbl3 unique (license_number)
+Hibernate: 
+    alter table if exists providers 
+       add constraint UK_m88q644diroxroq42ujiisbl3 unique (license_number)
+2025-07-31T14:44:18.339+05:30 DEBUG 46503 --- [health-first-server] [           main] org.hibernate.SQL                        : 
+    alter table if exists providers 
+       drop constraint if exists UK_85mm1ap9qqwwqq2fd8pp58a47
+Hibernate: 
+    alter table if exists providers 
+       drop constraint if exists UK_85mm1ap9qqwwqq2fd8pp58a47
+2025-07-31T14:44:18.339+05:30 DEBUG 46503 --- [health-first-server] [           main] org.hibernate.SQL                        : 
+    alter table if exists providers 
+       add constraint UK_85mm1ap9qqwwqq2fd8pp58a47 unique (phone_number)
+Hibernate: 
+    alter table if exists providers 
+       add constraint UK_85mm1ap9qqwwqq2fd8pp58a47 unique (phone_number)
+2025-07-31T14:44:18.339+05:30 DEBUG 46503 --- [health-first-server] [           main] org.hibernate.SQL                        : 
+    alter table if exists refresh_tokens 
+       drop constraint if exists UK_o2mlirhldriil2y7krapq4frt
+Hibernate: 
+    alter table if exists refresh_tokens 
+       drop constraint if exists UK_o2mlirhldriil2y7krapq4frt
+2025-07-31T14:44:18.339+05:30 DEBUG 46503 --- [health-first-server] [           main] org.hibernate.SQL                        : 
+    alter table if exists refresh_tokens 
+       add constraint UK_o2mlirhldriil2y7krapq4frt unique (token_hash)
+Hibernate: 
+    alter table if exists refresh_tokens 
+       add constraint UK_o2mlirhldriil2y7krapq4frt unique (token_hash)
+2025-07-31T14:44:18.340+05:30 DEBUG 46503 --- [health-first-server] [           main] org.hibernate.SQL                        : 
+    alter table if exists refresh_tokens 
+       add constraint FK7euc7bblyp6m2ath08be0kbro 
+       foreign key (provider_id) 
+       references providers
+Hibernate: 
+    alter table if exists refresh_tokens 
+       add constraint FK7euc7bblyp6m2ath08be0kbro 
+       foreign key (provider_id) 
+       references providers
+2025-07-31T14:44:18.343+05:30  INFO 46503 --- [health-first-server] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-31T14:44:18.526+05:30  INFO 46503 --- [health-first-server] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-07-31T14:44:18.843+05:30 DEBUG 46503 --- [health-first-server] [           main] c.h.middleware.AuthenticationMiddleware  : Filter 'authenticationMiddleware' configured for use
+2025-07-31T14:44:18.925+05:30  WARN 46503 --- [health-first-server] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-31T14:44:18.944+05:30  WARN 46503 --- [health-first-server] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 40416d9c-a9e4-4e70-ad6f-5b58dc2a9a44
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-07-31T14:44:19.079+05:30  INFO 46503 --- [health-first-server] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4cb1af3f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@56034552, org.springframework.security.web.context.SecurityContextHolderFilter@5b7b5484, org.springframework.security.web.header.HeaderWriterFilter@6f67291f, org.springframework.web.filter.CorsFilter@32bff23d, org.springframework.security.web.authentication.logout.LogoutFilter@5c4c4e96, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6dbfd081, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4691e2f5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@627d29cc, org.springframework.security.web.session.SessionManagementFilter@2cf073da, org.springframework.security.web.access.ExceptionTranslationFilter@447cdbaa, org.springframework.security.web.access.intercept.AuthorizationFilter@14f1db20]
+2025-07-31T14:44:19.215+05:30  INFO 46503 --- [health-first-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api/v1'
+2025-07-31T14:44:19.219+05:30  INFO 46503 --- [health-first-server] [           main] c.h.HealthFirstServerApplication         : Started HealthFirstServerApplication in 2.741 seconds (process running for 2.904)
+2025-07-31T14:44:34.128+05:30  INFO 46503 --- [health-first-server] [nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/api/v1]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-31T14:44:34.128+05:30  INFO 46503 --- [health-first-server] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-31T14:44:34.129+05:30  INFO 46503 --- [health-first-server] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-07-31T14:44:34.132+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api-docs
+2025-07-31T14:44:34.136+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:44:34.137+05:30  WARN 46503 --- [health-first-server] [nio-8080-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/v1/api-docs' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2025-07-31T14:44:34.144+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api-docs
+2025-07-31T14:44:34.300+05:30  INFO 46503 --- [health-first-server] [nio-8080-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 141 ms
+2025-07-31T14:44:46.975+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui.html
+2025-07-31T14:44:46.976+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:44:46.979+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui.html
+2025-07-31T14:44:55.542+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui.html
+2025-07-31T14:44:55.543+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:44:55.551+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui.html
+2025-07-31T14:44:55.568+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/index.html
+2025-07-31T14:44:55.569+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:44:55.585+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/index.html
+2025-07-31T14:44:55.632+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui.css
+2025-07-31T14:44:55.633+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/index.css
+2025-07-31T14:44:55.633+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:44:55.633+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:44:55.640+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui-bundle.js
+2025-07-31T14:44:55.640+05:30 DEBUG 46503 --- [health-first-server] [io-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-initializer.js
+2025-07-31T14:44:55.640+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-07-31T14:44:55.640+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:44:55.641+05:30 DEBUG 46503 --- [health-first-server] [io-8080-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:44:55.641+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/index.css
+2025-07-31T14:44:55.641+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:44:55.643+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui.css
+2025-07-31T14:44:55.651+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui-bundle.js
+2025-07-31T14:44:55.653+05:30 DEBUG 46503 --- [health-first-server] [io-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-initializer.js
+2025-07-31T14:44:55.654+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-07-31T14:44:55.836+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/favicon-32x32.png
+2025-07-31T14:44:55.836+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api-docs/swagger-config
+2025-07-31T14:44:55.836+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:44:55.836+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:44:55.837+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api-docs/swagger-config
+2025-07-31T14:44:55.840+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/favicon-32x32.png
+2025-07-31T14:44:55.856+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api-docs
+2025-07-31T14:44:55.856+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:44:55.858+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api-docs
+2025-07-31T14:44:55.916+05:30  INFO 46503 --- [health-first-server] [nio-8080-exec-3] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 57 ms
+2025-07-31T14:45:06.476+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui.html
+2025-07-31T14:45:06.476+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:45:06.478+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui.html
+2025-07-31T14:45:59.533+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/index.html
+2025-07-31T14:45:59.534+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-31T14:45:59.535+05:30 DEBUG 46503 --- [health-first-server] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/index.html
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  18:27 min
+[[1;34mINFO[m] Finished at: 2025-07-31T15:02:43+05:30
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.springframework.boot:spring-boot-maven-plugin:3.2.0:run[m [1m(default-cli)[m on project [36mhealth-first-server[m: [1;31mProcess terminated with exit code: 137[m -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[0m[0m
