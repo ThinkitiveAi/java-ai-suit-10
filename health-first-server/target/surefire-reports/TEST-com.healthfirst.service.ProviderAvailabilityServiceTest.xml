@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.healthfirst.service.ProviderAvailabilityServiceTest" time="1.236" tests="22" errors="0" skipped="0" failures="6">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/target/test-classes:/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/target/classes:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.2.0/spring-boot-starter-web-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter/3.2.0/spring-boot-starter-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot/3.2.0/spring-boot-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.2.0/spring-boot-autoconfigure-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.2.0/spring-boot-starter-logging-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/ch/qos/logback/logback-classic/1.4.11/logback-classic-1.4.11.jar:/home/ttpl-lnvl15-0294/.m2/repository/ch/qos/logback/logback-core/1.4.11/logback-core-1.4.11.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.21.1/log4j-to-slf4j-2.21.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/logging/log4j/log4j-api/2.21.1/log4j-api-2.21.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/slf4j/jul-to-slf4j/2.0.9/jul-to-slf4j-2.0.9.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.2.0/spring-boot-starter-json-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.15.3/jackson-datatype-jdk8-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.15.3/jackson-datatype-jsr310-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.15.3/jackson-module-parameter-names-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.2.0/spring-boot-starter-tomcat-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.16/tomcat-embed-core-10.1.16.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.16/tomcat-embed-websocket-10.1.16.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-web/6.1.1/spring-web-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-beans/6.1.1/spring-beans-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/io/micrometer/micrometer-observation/1.12.0/micrometer-observation-1.12.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/io/micrometer/micrometer-commons/1.12.0/micrometer-commons-1.12.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-webmvc/6.1.1/spring-webmvc-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-context/6.1.1/spring-context-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-expression/6.1.1/spring-expression-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.2.0/spring-boot-starter-data-jpa-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.2.0/spring-boot-starter-aop-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/aspectj/aspectjweaver/1.9.20.1/aspectjweaver-1.9.20.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.2.0/spring-boot-starter-jdbc-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/zaxxer/HikariCP/5.0.1/HikariCP-5.0.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-jdbc/6.1.1/spring-jdbc-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/hibernate/orm/hibernate-core/6.3.1.Final/hibernate-core-6.3.1.Final.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/home/ttpl-lnvl15-0294/.m2/repository/io/smallrye/jandex/3.1.2/jandex-3.1.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/classmate/1.6.0/classmate-1.6.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.4/jaxb-runtime-4.0.4.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.4/jaxb-core-4.0.4.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/glassfish/jaxb/txw2/4.0.4/txw2-4.0.4.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/antlr/antlr4-runtime/4.10.1/antlr4-runtime-4.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/data/spring-data-jpa/3.2.0/spring-data-jpa-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/data/spring-data-commons/3.2.0/spring-data-commons-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-orm/6.1.1/spring-orm-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-tx/6.1.1/spring-tx-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-aspects/6.1.1/spring-aspects-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.2.0/spring-boot-starter-security-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-aop/6.1.1/spring-aop-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/security/spring-security-config/6.2.0/spring-security-config-6.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/security/spring-security-web/6.2.0/spring-security-web-6.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.2.0/spring-boot-starter-validation-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.16/tomcat-embed-el-10.1.16.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.1.Final/hibernate-validator-8.0.1.Final.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-mail/3.2.0/spring-boot-starter-mail-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-context-support/6.1.1/spring-context-support-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/eclipse/angus/jakarta.mail/2.0.2/jakarta.mail-2.0.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.2/jakarta.activation-api-2.1.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/eclipse/angus/angus-activation/2.0.1/angus-activation-2.0.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/mysql/mysql-connector-j/8.1.0/mysql-connector-j-8.1.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/auth0/java-jwt/4.4.0/java-jwt-4.4.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.3/jackson-databind-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.3/jackson-annotations-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.3/jackson-core-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/security/spring-security-crypto/6.2.0/spring-security-crypto-6.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-ui/2.2.0/springdoc-openapi-starter-webmvc-ui-2.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-api/2.2.0/springdoc-openapi-starter-webmvc-api-2.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springdoc/springdoc-openapi-starter-common/2.2.0/springdoc-openapi-starter-common-2.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/io/swagger/core/v3/swagger-core-jakarta/2.2.15/swagger-core-jakarta-2.2.15.jar:/home/ttpl-lnvl15-0294/.m2/repository/io/swagger/core/v3/swagger-annotations-jakarta/2.2.15/swagger-annotations-jakarta-2.2.15.jar:/home/ttpl-lnvl15-0294/.m2/repository/io/swagger/core/v3/swagger-models-jakarta/2.2.15/swagger-models-jakarta-2.2.15.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.15.3/jackson-dataformat-yaml-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/webjars/swagger-ui/5.2.0/swagger-ui-5.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/commons/commons-lang3/3.13.0/commons-lang3-3.13.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.2.0/spring-boot-starter-test-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-test/3.2.0/spring-boot-test-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.2.0/spring-boot-test-autoconfigure-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/jayway/jsonpath/json-path/2.8.0/json-path-2.8.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.1/jakarta.xml.bind-api-4.0.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/net/minidev/json-smart/2.5.0/json-smart-2.5.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/net/minidev/accessors-smart/2.5.0/accessors-smart-2.5.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/ow2/asm/asm/9.3/asm-9.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/assertj/assertj-core/3.24.2/assertj-core-3.24.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/awaitility/awaitility/4.2.0/awaitility-4.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.1/junit-jupiter-5.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.1/junit-jupiter-api-5.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/junit/platform/junit-platform-commons/1.10.1/junit-platform-commons-1.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.1/junit-jupiter-params-5.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.1/junit-jupiter-engine-5.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/junit/platform/junit-platform-engine/1.10.1/junit-platform-engine-1.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/mockito/mockito-core/5.7.0/mockito-core-5.7.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/mockito/mockito-junit-jupiter/5.7.0/mockito-junit-jupiter-5.7.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-core/6.1.1/spring-core-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-jcl/6.1.1/spring-jcl-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-test/6.1.1/spring-test-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/security/spring-security-test/6.2.0/spring-security-test-6.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/security/spring-security-core/6.2.0/spring-security-core-6.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/testcontainers/junit-jupiter/1.19.3/junit-jupiter-1.19.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/testcontainers/testcontainers/1.19.3/testcontainers-1.19.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/hamcrest/hamcrest-core/2.2/hamcrest-core-2.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/commons/commons-compress/1.24.0/commons-compress-1.24.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/rnorth/duct-tape/duct-tape/1.0.8/duct-tape-1.0.8.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/github/docker-java/docker-java-api/3.3.4/docker-java-api-3.3.4.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/github/docker-java/docker-java-transport-zerodep/3.3.4/docker-java-transport-zerodep-3.3.4.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/github/docker-java/docker-java-transport/3.3.4/docker-java-transport-3.3.4.jar:/home/ttpl-lnvl15-0294/.m2/repository/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/testcontainers/mysql/1.19.3/mysql-1.19.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/testcontainers/jdbc/1.19.3/jdbc-1.19.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/testcontainers/database-commons/1.19.3/database-commons-1.19.3.jar:"/>
+    <property name="java.vm.vendor" value="Ubuntu"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://ubuntu.com/"/>
+    <property name="user.timezone" value="Asia/Kolkata"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
+    <property name="sun.java.command" value="/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/target/surefire/surefirebooter-20250731161948513_3.jar /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/target/surefire 2025-07-31T16-19-48_472-jvmRun1 surefire-20250731161948513_1tmp surefire_0-20250731161948513_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="ProviderAvailabilityServiceTest"/>
+    <property name="surefire.test.class.path" value="/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/target/test-classes:/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/target/classes:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.2.0/spring-boot-starter-web-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter/3.2.0/spring-boot-starter-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot/3.2.0/spring-boot-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.2.0/spring-boot-autoconfigure-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.2.0/spring-boot-starter-logging-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/ch/qos/logback/logback-classic/1.4.11/logback-classic-1.4.11.jar:/home/ttpl-lnvl15-0294/.m2/repository/ch/qos/logback/logback-core/1.4.11/logback-core-1.4.11.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.21.1/log4j-to-slf4j-2.21.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/logging/log4j/log4j-api/2.21.1/log4j-api-2.21.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/slf4j/jul-to-slf4j/2.0.9/jul-to-slf4j-2.0.9.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.2.0/spring-boot-starter-json-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.15.3/jackson-datatype-jdk8-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.15.3/jackson-datatype-jsr310-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.15.3/jackson-module-parameter-names-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.2.0/spring-boot-starter-tomcat-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.16/tomcat-embed-core-10.1.16.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.16/tomcat-embed-websocket-10.1.16.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-web/6.1.1/spring-web-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-beans/6.1.1/spring-beans-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/io/micrometer/micrometer-observation/1.12.0/micrometer-observation-1.12.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/io/micrometer/micrometer-commons/1.12.0/micrometer-commons-1.12.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-webmvc/6.1.1/spring-webmvc-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-context/6.1.1/spring-context-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-expression/6.1.1/spring-expression-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.2.0/spring-boot-starter-data-jpa-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.2.0/spring-boot-starter-aop-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/aspectj/aspectjweaver/1.9.20.1/aspectjweaver-1.9.20.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.2.0/spring-boot-starter-jdbc-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/zaxxer/HikariCP/5.0.1/HikariCP-5.0.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-jdbc/6.1.1/spring-jdbc-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/hibernate/orm/hibernate-core/6.3.1.Final/hibernate-core-6.3.1.Final.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/home/ttpl-lnvl15-0294/.m2/repository/io/smallrye/jandex/3.1.2/jandex-3.1.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/classmate/1.6.0/classmate-1.6.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.4/jaxb-runtime-4.0.4.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.4/jaxb-core-4.0.4.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/glassfish/jaxb/txw2/4.0.4/txw2-4.0.4.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/antlr/antlr4-runtime/4.10.1/antlr4-runtime-4.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/data/spring-data-jpa/3.2.0/spring-data-jpa-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/data/spring-data-commons/3.2.0/spring-data-commons-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-orm/6.1.1/spring-orm-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-tx/6.1.1/spring-tx-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-aspects/6.1.1/spring-aspects-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.2.0/spring-boot-starter-security-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-aop/6.1.1/spring-aop-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/security/spring-security-config/6.2.0/spring-security-config-6.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/security/spring-security-web/6.2.0/spring-security-web-6.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.2.0/spring-boot-starter-validation-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.16/tomcat-embed-el-10.1.16.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.1.Final/hibernate-validator-8.0.1.Final.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-mail/3.2.0/spring-boot-starter-mail-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-context-support/6.1.1/spring-context-support-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/eclipse/angus/jakarta.mail/2.0.2/jakarta.mail-2.0.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.2/jakarta.activation-api-2.1.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/eclipse/angus/angus-activation/2.0.1/angus-activation-2.0.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/mysql/mysql-connector-j/8.1.0/mysql-connector-j-8.1.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/auth0/java-jwt/4.4.0/java-jwt-4.4.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.3/jackson-databind-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.3/jackson-annotations-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.3/jackson-core-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/security/spring-security-crypto/6.2.0/spring-security-crypto-6.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-ui/2.2.0/springdoc-openapi-starter-webmvc-ui-2.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-api/2.2.0/springdoc-openapi-starter-webmvc-api-2.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springdoc/springdoc-openapi-starter-common/2.2.0/springdoc-openapi-starter-common-2.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/io/swagger/core/v3/swagger-core-jakarta/2.2.15/swagger-core-jakarta-2.2.15.jar:/home/ttpl-lnvl15-0294/.m2/repository/io/swagger/core/v3/swagger-annotations-jakarta/2.2.15/swagger-annotations-jakarta-2.2.15.jar:/home/ttpl-lnvl15-0294/.m2/repository/io/swagger/core/v3/swagger-models-jakarta/2.2.15/swagger-models-jakarta-2.2.15.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.15.3/jackson-dataformat-yaml-2.15.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/webjars/swagger-ui/5.2.0/swagger-ui-5.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/commons/commons-lang3/3.13.0/commons-lang3-3.13.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.2.0/spring-boot-starter-test-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-test/3.2.0/spring-boot-test-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.2.0/spring-boot-test-autoconfigure-3.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/jayway/jsonpath/json-path/2.8.0/json-path-2.8.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.1/jakarta.xml.bind-api-4.0.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/net/minidev/json-smart/2.5.0/json-smart-2.5.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/net/minidev/accessors-smart/2.5.0/accessors-smart-2.5.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/ow2/asm/asm/9.3/asm-9.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/assertj/assertj-core/3.24.2/assertj-core-3.24.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/awaitility/awaitility/4.2.0/awaitility-4.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.1/junit-jupiter-5.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.1/junit-jupiter-api-5.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/junit/platform/junit-platform-commons/1.10.1/junit-platform-commons-1.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.1/junit-jupiter-params-5.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.1/junit-jupiter-engine-5.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/junit/platform/junit-platform-engine/1.10.1/junit-platform-engine-1.10.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/mockito/mockito-core/5.7.0/mockito-core-5.7.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/mockito/mockito-junit-jupiter/5.7.0/mockito-junit-jupiter-5.7.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-core/6.1.1/spring-core-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-jcl/6.1.1/spring-jcl-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/spring-test/6.1.1/spring-test-6.1.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/security/spring-security-test/6.2.0/spring-security-test-6.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/springframework/security/spring-security-core/6.2.0/spring-security-core-6.2.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/testcontainers/junit-jupiter/1.19.3/junit-jupiter-1.19.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/testcontainers/testcontainers/1.19.3/testcontainers-1.19.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/hamcrest/hamcrest-core/2.2/hamcrest-core-2.2.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/apache/commons/commons-compress/1.24.0/commons-compress-1.24.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/rnorth/duct-tape/duct-tape/1.0.8/duct-tape-1.0.8.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/github/docker-java/docker-java-api/3.3.4/docker-java-api-3.3.4.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/github/docker-java/docker-java-transport-zerodep/3.3.4/docker-java-transport-zerodep-3.3.4.jar:/home/ttpl-lnvl15-0294/.m2/repository/com/github/docker-java/docker-java-transport/3.3.4/docker-java-transport-3.3.4.jar:/home/ttpl-lnvl15-0294/.m2/repository/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/testcontainers/mysql/1.19.3/mysql-1.19.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/testcontainers/jdbc/1.19.3/jdbc-1.19.3.jar:/home/ttpl-lnvl15-0294/.m2/repository/org/testcontainers/database-commons/1.19.3/database-commons-1.19.3.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/ttpl-lnvl15-0294"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-04-16"/>
+    <property name="java.home" value="/usr/lib/jvm/java-21-openjdk-amd64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="surefire.real.class.path" value="/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/target/surefire/surefirebooter-20250731161948513_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.3+9-Ubuntu-1ubuntu123.10.1"/>
+    <property name="user.name" value="ttpl-lnvl15-0294"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="6.5.0-44-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/ttpl-lnvl15-0294/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-21"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="21.0.3"/>
+    <property name="user.dir" value="/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/tmp/.mount_CursorXWXnWU/usr/lib/:/tmp/.mount_CursorXWXnWU/usr/lib32/:/tmp/.mount_CursorXWXnWU/usr/lib64/:/tmp/.mount_CursorXWXnWU/lib/:/tmp/.mount_CursorXWXnWU/lib/i386-linux-gnu/:/tmp/.mount_CursorXWXnWU/lib/x86_64-linux-gnu/:/tmp/.mount_CursorXWXnWU/lib/aarch64-linux-gnu/:/tmp/.mount_CursorXWXnWU/lib32/:/tmp/.mount_CursorXWXnWU/lib64/::/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Ubuntu"/>
+    <property name="java.vm.version" value="21.0.3+9-Ubuntu-1ubuntu123.10.1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="testGetProviderAvailability_Success" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="1.089">
+    <system-out><![CDATA[16:19:50.028 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Fetching availability for provider: e1bdca5c-2f5d-4eed-a3b5-ba69d301ba0d from 2025-07-31 to 2025-08-07
+]]></system-out>
+    <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/home/ttpl-lnvl15-0294/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+  </testcase>
+  <testcase name="testUpdateAvailability_WrongProvider" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.005">
+    <system-out><![CDATA[16:19:50.057 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Updating availability: 7a67a524-67a5-4e62-b101-9e01252bae32 for provider: 01533fbf-97e1-4b19-94da-aac54446fb7b
+16:19:50.058 [main] WARN com.healthfirst.service.ProviderAvailabilityService -- Invalid request for update availability: Availability does not belong to provider: 01533fbf-97e1-4b19-94da-aac54446fb7b
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateAvailability_RecurringDaily" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.006">
+    <system-out><![CDATA[16:19:50.064 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Creating availability for provider: 08c6fbbc-9249-4df9-98aa-46e88ca6f328 on date: 2025-08-01
+16:19:50.065 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Generated 16 appointment slots for availability: null
+16:19:50.066 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Generated 16 appointment slots for availability: null
+16:19:50.066 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Generated 16 appointment slots for availability: null
+16:19:50.066 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Generated 16 appointment slots for availability: null
+16:19:50.066 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Generated 16 appointment slots for availability: null
+16:19:50.066 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Generated 16 appointment slots for availability: null
+16:19:50.066 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Generated 16 appointment slots for availability: null
+16:19:50.066 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Successfully created 7 availability instance(s) for provider: 08c6fbbc-9249-4df9-98aa-46e88ca6f328
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateAvailability_PastDate" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.004">
+    <system-out><![CDATA[16:19:50.071 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Creating availability for provider: b0e09918-3cb3-4a28-964e-b0ce70037de9 on date: 2025-07-30
+16:19:50.071 [main] WARN com.healthfirst.service.ProviderAvailabilityService -- Validation errors for create availability: [Availability date cannot be in the past]
+]]></system-out>
+  </testcase>
+  <testcase name="testSearchAvailableSlots_Success" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.007">
+    <system-out><![CDATA[16:19:50.076 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Searching available slots with criteria: AvailabilitySearchRequest{startDate=2025-08-01, endDate=2025-08-07, specialization='Cardiology', appointmentType=null, location='null', availableOnly=true, maxResults=10}
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateAvailability_ProviderNotFound" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.018">
+    <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.testCreateAvailability_ProviderNotFound(ProviderAvailabilityServiceTest.java:121)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[16:19:50.088 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Creating availability for provider: 49d8bd46-8358-4c3f-82a0-b9d6b0e2b6cc on date: 2025-08-01
+16:19:50.089 [main] ERROR com.healthfirst.service.ProviderAvailabilityService -- Error creating availability for provider: 49d8bd46-8358-4c3f-82a0-b9d6b0e2b6cc
+java.lang.IllegalArgumentException: Provider not found: 49d8bd46-8358-4c3f-82a0-b9d6b0e2b6cc
+	at com.healthfirst.service.ProviderAvailabilityService.lambda$validateProvider$3(ProviderAvailabilityService.java:258)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.healthfirst.service.ProviderAvailabilityService.validateProvider(ProviderAvailabilityService.java:258)
+	at com.healthfirst.service.ProviderAvailabilityService.createAvailability(ProviderAvailabilityService.java:46)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.testCreateAvailability_ProviderNotFound(ProviderAvailabilityServiceTest.java:117)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></system-out>
+  </testcase>
+  <testcase name="testConcurrencyHandling_OverlapDetection" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.006">
+    <failure message="expected: &lt;OVERLAP_ERROR&gt; but was: &lt;CREATE_ERROR&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <OVERLAP_ERROR> but was: <CREATE_ERROR>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.testConcurrencyHandling_OverlapDetection(ProviderAvailabilityServiceTest.java:557)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[16:19:50.109 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Creating availability for provider: 81424f96-9a3f-45ab-9ce5-2671c6cd2ea1 on date: 2025-08-01
+16:19:50.110 [main] ERROR com.healthfirst.service.ProviderAvailabilityService -- Error creating availability for provider: 81424f96-9a3f-45ab-9ce5-2671c6cd2ea1
+java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.base/java.util.LinkedList.checkElementIndex(LinkedList.java:566)
+	at java.base/java.util.LinkedList.get(LinkedList.java:487)
+	at com.healthfirst.service.ProviderAvailabilityService.createAvailability(ProviderAvailabilityService.java:73)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.testConcurrencyHandling_OverlapDetection(ProviderAvailabilityServiceTest.java:553)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></system-out>
+  </testcase>
+  <testcase name="testSearchAvailableSlots_ByPriceRange" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.005">
+    <system-out><![CDATA[16:19:50.115 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Searching available slots with criteria: AvailabilitySearchRequest{startDate=2025-08-01, endDate=2025-08-07, specialization='null', appointmentType=null, location='null', availableOnly=true, maxResults=50}
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateAvailability_Success" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.009">
+    <system-out><![CDATA[16:19:50.124 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Creating availability for provider: 6bdaab77-967d-4ae9-bb37-1eb99f44fc86 on date: 2025-08-01
+16:19:50.125 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Generated 16 appointment slots for availability: e2efc7f6-5f74-41a1-9270-1d31cf42a551
+16:19:50.125 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Successfully created 1 availability instance(s) for provider: 6bdaab77-967d-4ae9-bb37-1eb99f44fc86
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateAvailability_InvalidTimeRange" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.005">
+    <system-out><![CDATA[16:19:50.132 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Creating availability for provider: e35f96f6-d686-4582-9b1b-24e507d11675 on date: 2025-08-01
+16:19:50.132 [main] WARN com.healthfirst.service.ProviderAvailabilityService -- Validation errors for create availability: [Start time must be before end time]
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateAvailability_Success" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.004">
+    <system-out><![CDATA[16:19:50.135 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Updating availability: 6a684a09-9a05-41e5-8be2-c73765cb7eb9 for provider: f9a5fe24-87be-42ba-8826-5db03298da7d
+16:19:50.136 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Successfully updated availability: 6a684a09-9a05-41e5-8be2-c73765cb7eb9
+]]></system-out>
+  </testcase>
+  <testcase name="testSearchAvailableSlots_ByAppointmentType" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.003">
+    <system-out><![CDATA[16:19:50.140 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Searching available slots with criteria: AvailabilitySearchRequest{startDate=2025-08-01, endDate=2025-08-07, specialization='null', appointmentType=Consultation, location='null', availableOnly=true, maxResults=50}
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateAvailability_HasBookedSlots" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.002">
+    <system-out><![CDATA[16:19:50.143 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Updating availability: 16b7ac0d-cadc-4692-b097-d3bf1f753d4b for provider: 72cd677b-371a-4020-842f-f22ffb3080f2
+]]></system-out>
+  </testcase>
+  <testcase name="testSlotGeneration_TimezoneHandling" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.004">
+    <system-out><![CDATA[16:19:50.146 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Creating availability for provider: bef8108d-3719-476f-a499-feb62156f41b on date: 2025-08-01
+16:19:50.148 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Generated 16 appointment slots for availability: 06ece712-be3d-4405-bf2e-6ef5c6c969c4
+16:19:50.148 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Successfully created 1 availability instance(s) for provider: bef8108d-3719-476f-a499-feb62156f41b
+]]></system-out>
+  </testcase>
+  <testcase name="testGetProviderAvailability_ProviderNotFound" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.004">
+    <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.RuntimeException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.RuntimeException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.testGetProviderAvailability_ProviderNotFound(ProviderAvailabilityServiceTest.java:262)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.RuntimeException: Failed to fetch availability
+	at com.healthfirst.service.ProviderAvailabilityService.getProviderAvailability(ProviderAvailabilityService.java:105)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.lambda$testGetProviderAvailability_ProviderNotFound$2(ProviderAvailabilityServiceTest.java:263)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+Caused by: java.lang.IllegalArgumentException: Provider not found: c91a8e04-771f-4f59-80a9-d504a9dede13
+	at com.healthfirst.service.ProviderAvailabilityService.getProviderAvailability(ProviderAvailabilityService.java:93)
+	... 8 more
+]]></failure>
+    <system-out><![CDATA[16:19:50.151 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Fetching availability for provider: c91a8e04-771f-4f59-80a9-d504a9dede13 from 2025-07-31 to 2025-08-07
+16:19:50.151 [main] ERROR com.healthfirst.service.ProviderAvailabilityService -- Error fetching availability for provider: c91a8e04-771f-4f59-80a9-d504a9dede13
+java.lang.IllegalArgumentException: Provider not found: c91a8e04-771f-4f59-80a9-d504a9dede13
+	at com.healthfirst.service.ProviderAvailabilityService.getProviderAvailability(ProviderAvailabilityService.java:93)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.lambda$testGetProviderAvailability_ProviderNotFound$2(ProviderAvailabilityServiceTest.java:263)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.testGetProviderAvailability_ProviderNotFound(ProviderAvailabilityServiceTest.java:262)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></system-out>
+  </testcase>
+  <testcase name="testSlotGeneration_BufferTime" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.003">
+    <system-out><![CDATA[16:19:50.157 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Creating availability for provider: 14eb4bdd-c21b-4357-802d-a6254d0df34d on date: 2025-08-01
+16:19:50.157 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Generated 16 appointment slots for availability: a751e68f-1b1d-48f2-9f22-713f130e63a2
+16:19:50.157 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Successfully created 1 availability instance(s) for provider: 14eb4bdd-c21b-4357-802d-a6254d0df34d
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateAvailability_OverlappingSlots" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.002">
+    <system-out><![CDATA[16:19:50.160 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Creating availability for provider: 64b3a81b-d20d-4af6-a6a7-e92a762f833b on date: 2025-08-01
+16:19:50.160 [main] WARN com.healthfirst.service.ProviderAvailabilityService -- Overlapping availability detected for provider: 64b3a81b-d20d-4af6-a6a7-e92a762f833b on date: 2025-08-01
+]]></system-out>
+  </testcase>
+  <testcase name="testDeleteAvailability_Success" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.007">
+    <failure message="&#10;slotRepository.findSlotsByProviderAvailability(&#10;    3ad9c6f9-6a31-4db3-be28-232004a29bb7&#10;);&#10;Wanted 1 time:&#10;-&gt; at com.healthfirst.service.ProviderAvailabilityServiceTest.testDeleteAvailability_Success(ProviderAvailabilityServiceTest.java:368)&#10;But was 2 times:&#10;-&gt; at com.healthfirst.service.ProviderAvailabilityService.hasBookedSlots(ProviderAvailabilityService.java:434)&#10;-&gt; at com.healthfirst.service.ProviderAvailabilityService.deleteAvailabilityInstance(ProviderAvailabilityService.java:494)&#10;&#10;" type="org.mockito.exceptions.verification.TooManyActualInvocations"><![CDATA[org.mockito.exceptions.verification.TooManyActualInvocations: 
+
+slotRepository.findSlotsByProviderAvailability(
+    3ad9c6f9-6a31-4db3-be28-232004a29bb7
+);
+Wanted 1 time:
+-> at com.healthfirst.service.ProviderAvailabilityServiceTest.testDeleteAvailability_Success(ProviderAvailabilityServiceTest.java:368)
+But was 2 times:
+-> at com.healthfirst.service.ProviderAvailabilityService.hasBookedSlots(ProviderAvailabilityService.java:434)
+-> at com.healthfirst.service.ProviderAvailabilityService.deleteAvailabilityInstance(ProviderAvailabilityService.java:494)
+
+
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.testDeleteAvailability_Success(ProviderAvailabilityServiceTest.java:368)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[16:19:50.162 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Deleting availability: 3ad9c6f9-6a31-4db3-be28-232004a29bb7 for provider: c47c8e97-a820-400a-b71c-3b0f7118ad96
+16:19:50.163 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Successfully deleted availability: 3ad9c6f9-6a31-4db3-be28-232004a29bb7
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateAvailability_NotFound" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.002">
+    <system-out><![CDATA[16:19:50.172 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Updating availability: 6f2afeff-79de-42a9-a6b6-d838c20e5307 for provider: fbcb4fba-cf8d-4324-bafd-d3ece2b9f537
+16:19:50.172 [main] WARN com.healthfirst.service.ProviderAvailabilityService -- Invalid request for update availability: Availability not found: 6f2afeff-79de-42a9-a6b6-d838c20e5307
+]]></system-out>
+  </testcase>
+  <testcase name="testSearchAvailableSlots_InvalidDateRange" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.003">
+    <failure message="Unexpected exception type thrown, expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.RuntimeException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.RuntimeException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.testSearchAvailableSlots_InvalidDateRange(ProviderAvailabilityServiceTest.java:436)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.RuntimeException: Failed to search available slots
+	at com.healthfirst.service.ProviderAvailabilityService.searchAvailableSlots(ProviderAvailabilityService.java:250)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.lambda$testSearchAvailableSlots_InvalidDateRange$3(ProviderAvailabilityServiceTest.java:437)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+Caused by: java.lang.IllegalArgumentException: Invalid date range
+	at com.healthfirst.service.ProviderAvailabilityService.searchAvailableSlots(ProviderAvailabilityService.java:210)
+	... 8 more
+]]></failure>
+    <system-out><![CDATA[16:19:50.175 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Searching available slots with criteria: AvailabilitySearchRequest{startDate=2025-08-07, endDate=2025-08-01, specialization='null', appointmentType=null, location='null', availableOnly=true, maxResults=50}
+16:19:50.175 [main] ERROR com.healthfirst.service.ProviderAvailabilityService -- Error searching available slots
+java.lang.IllegalArgumentException: Invalid date range
+	at com.healthfirst.service.ProviderAvailabilityService.searchAvailableSlots(ProviderAvailabilityService.java:210)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.lambda$testSearchAvailableSlots_InvalidDateRange$3(ProviderAvailabilityServiceTest.java:437)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.testSearchAvailableSlots_InvalidDateRange(ProviderAvailabilityServiceTest.java:436)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></system-out>
+  </testcase>
+  <testcase name="testDeleteAvailability_HasBookedSlots" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.002">
+    <system-out><![CDATA[16:19:50.178 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Deleting availability: 9141f42f-febf-4361-b8b1-4542d3355749 for provider: ab7a50d9-425f-427a-910b-3272900a0523
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateAvailability_InactiveProvider" classname="com.healthfirst.service.ProviderAvailabilityServiceTest" time="0.003">
+    <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.testCreateAvailability_InactiveProvider(ProviderAvailabilityServiceTest.java:139)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[16:19:50.181 [main] INFO com.healthfirst.service.ProviderAvailabilityService -- Creating availability for provider: 058340c0-ffca-471b-b242-85b29a5e2465 on date: 2025-08-01
+16:19:50.181 [main] ERROR com.healthfirst.service.ProviderAvailabilityService -- Error creating availability for provider: 058340c0-ffca-471b-b242-85b29a5e2465
+java.lang.IllegalArgumentException: Provider is not active: 058340c0-ffca-471b-b242-85b29a5e2465
+	at com.healthfirst.service.ProviderAvailabilityService.validateProvider(ProviderAvailabilityService.java:261)
+	at com.healthfirst.service.ProviderAvailabilityService.createAvailability(ProviderAvailabilityService.java:46)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.testCreateAvailability_InactiveProvider(ProviderAvailabilityServiceTest.java:135)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></system-out>
+  </testcase>
+</testsuite>

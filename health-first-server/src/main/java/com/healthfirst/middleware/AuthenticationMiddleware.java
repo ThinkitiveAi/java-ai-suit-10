@@ -108,6 +108,8 @@ public class AuthenticationMiddleware extends OncePerRequestFilter {
                path.startsWith("/provider/check-") ||
                path.equals("/patient/register") ||
                path.startsWith("/patient/check-") ||
+               path.startsWith("/availability/search") ||
+               path.equals("/availability/appointment-types") ||
                path.equals("/actuator/health") ||
                path.startsWith("/h2-console") ||
                path.startsWith("/swagger-ui") ||

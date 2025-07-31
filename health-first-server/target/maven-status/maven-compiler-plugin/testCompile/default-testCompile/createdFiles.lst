@@ -3,3 +3,4 @@ com/healthfirst/service/AuthServiceTest.class
 com/healthfirst/controller/ProviderControllerIntegrationTest.class
 com/healthfirst/service/PatientServiceTest.class
 com/healthfirst/service/PatientAuthServiceTest.class
+com/healthfirst/service/UnifiedAuthServiceTest.class

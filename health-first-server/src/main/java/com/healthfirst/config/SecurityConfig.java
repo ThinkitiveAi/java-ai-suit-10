@@ -47,6 +47,8 @@ public class SecurityConfig {
                     "/patient/register",
                     "/patient/check-email",
                     "/patient/check-phone",
+                    "/availability/search",
+                    "/availability/appointment-types",
                     "/actuator/health",
                     "/h2-console/**",
                     "/swagger-ui/**",
