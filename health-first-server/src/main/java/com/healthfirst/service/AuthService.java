@@ -5,6 +5,8 @@ import com.healthfirst.dto.PatientLoginResponse;
 import com.healthfirst.dto.ProviderLoginRequest;
 import com.healthfirst.dto.ProviderLoginResponse;
 import com.healthfirst.dto.RefreshTokenRequest;
+import com.healthfirst.dto.UnifiedLoginRequest;
+import com.healthfirst.dto.UnifiedLoginResponse;
 import com.healthfirst.entity.Patient;
 import com.healthfirst.entity.Provider;
 import com.healthfirst.entity.RefreshToken;
@@ -438,5 +440,149 @@ public class AuthService {
         }
         
         return localPart.charAt(0) + "***" + localPart.charAt(localPart.length() - 1) + domainPart;
+    }
+
+    // ========== UNIFIED AUTHENTICATION METHODS ==========
+
+    /**
+     * Unified login method that handles both patient and provider authentication
+     */
+    public UnifiedLoginResponse unifiedLogin(UnifiedLoginRequest request, String userAgent, String ipAddress) {
+        try {
+            logger.info("Unified login attempt for identifier: {} from IP: {}", 
+                       maskEmail(request.getIdentifier()), ipAddress);
+
+            // Determine user type if not explicitly provided
+            String userType = request.getUserType();
+            if (userType == null || userType.trim().isEmpty()) {
+                userType = detectUserType(request.getIdentifier());
+                if (userType == null) {
+                    logger.warn("User not found for identifier: {}", maskEmail(request.getIdentifier()));
+                    return UnifiedLoginResponse.error("Invalid credentials", "INVALID_CREDENTIALS");
+                }
+            }
+
+            // Delegate to appropriate login method based on user type
+            if ("provider".equalsIgnoreCase(userType)) {
+                return handleProviderLogin(request, userAgent, ipAddress);
+            } else if ("patient".equalsIgnoreCase(userType)) {
+                return handlePatientLogin(request, ipAddress);
+            } else {
+                logger.warn("Invalid user type specified: {}", userType);
+                return UnifiedLoginResponse.error("Invalid user type", "INVALID_USER_TYPE");
+            }
+
+        } catch (Exception e) {
+            logger.error("Error during unified login for identifier: {}", 
+                        maskEmail(request.getIdentifier()), e);
+            return UnifiedLoginResponse.error("Login failed. Please try again later.", "LOGIN_ERROR");
+        }
+    }
+
+    /**
+     * Auto-detect user type by checking both patient and provider tables
+     */
+    private String detectUserType(String identifier) {
+        // Check if identifier exists as a provider (email or phone)
+        Optional<Provider> providerOpt = findProviderByIdentifier(identifier);
+        if (providerOpt.isPresent()) {
+            return "provider";
+        }
+
+        // Check if identifier exists as a patient (email only)
+        if (emailPattern.matcher(identifier).matches()) {
+            Optional<Patient> patientOpt = patientRepository.findByEmail(identifier.toLowerCase().trim());
+            if (patientOpt.isPresent()) {
+                return "patient";
+            }
+        }
+
+        return null; // User not found
+    }
+
+    /**
+     * Handle provider login and convert to unified response
+     */
+    private UnifiedLoginResponse handleProviderLogin(UnifiedLoginRequest request, String userAgent, String ipAddress) {
+        // Convert to provider login request
+        ProviderLoginRequest providerRequest = new ProviderLoginRequest(
+            request.getIdentifier(), 
+            request.getPassword(), 
+            request.getRememberMe()
+        );
+
+        // Call existing provider login method
+        ProviderLoginResponse providerResponse = loginProvider(providerRequest, userAgent, ipAddress);
+
+        // Convert to unified response
+        if (providerResponse.isSuccess()) {
+            ProviderLoginResponse.LoginData providerData = providerResponse.getData();
+            ProviderLoginResponse.ProviderData provider = providerData.getProvider();
+
+            UnifiedLoginResponse.ProviderData unifiedProviderData = new UnifiedLoginResponse.ProviderData(
+                provider.getId(),
+                provider.getFirstName(),
+                provider.getLastName(),
+                provider.getEmail(),
+                provider.getSpecialization(),
+                provider.getVerificationStatus(),
+                provider.isActive()
+            );
+
+            UnifiedLoginResponse.LoginData unifiedLoginData = new UnifiedLoginResponse.LoginData(
+                providerData.getAccessToken(),
+                providerData.getRefreshToken(),
+                providerData.getExpiresIn(),
+                "provider",
+                unifiedProviderData
+            );
+
+            return UnifiedLoginResponse.success(unifiedLoginData);
+        } else {
+            return UnifiedLoginResponse.error(providerResponse.getMessage(), providerResponse.getErrorCode());
+        }
+    }
+
+    /**
+     * Handle patient login and convert to unified response
+     */
+    private UnifiedLoginResponse handlePatientLogin(UnifiedLoginRequest request, String ipAddress) {
+        // Convert to patient login request (email only)
+        PatientLoginRequest patientRequest = new PatientLoginRequest(
+            request.getIdentifier(), 
+            request.getPassword()
+        );
+
+        // Call existing patient login method
+        PatientLoginResponse patientResponse = loginPatient(patientRequest, ipAddress);
+
+        // Convert to unified response
+        if (patientResponse.isSuccess()) {
+            PatientLoginResponse.LoginData patientData = patientResponse.getData();
+            PatientLoginResponse.PatientData patient = patientData.getPatient();
+
+            UnifiedLoginResponse.PatientData unifiedPatientData = new UnifiedLoginResponse.PatientData(
+                patient.getId(),
+                patient.getFirstName(),
+                patient.getLastName(),
+                patient.getEmail(),
+                patient.getDateOfBirth(),
+                patient.getGender(),
+                patient.isEmailVerified(),
+                patient.isPhoneVerified(),
+                patient.isActive()
+            );
+
+            UnifiedLoginResponse.LoginData unifiedLoginData = new UnifiedLoginResponse.LoginData(
+                patientData.getAccessToken(),
+                patientData.getExpiresIn(),
+                "patient",
+                unifiedPatientData
+            );
+
+            return UnifiedLoginResponse.success(unifiedLoginData);
+        } else {
+            return UnifiedLoginResponse.error(patientResponse.getMessage(), patientResponse.getErrorCode());
+        }
     }
 } 

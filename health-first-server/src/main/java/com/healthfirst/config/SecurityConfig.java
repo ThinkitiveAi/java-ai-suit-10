@@ -37,13 +37,14 @@ public class SecurityConfig {
             .authorizeHttpRequests(authz -> authz
                 // Public endpoints
                 .requestMatchers(
+                    "/auth/login",
+                    "/auth/provider/login",
                     "/provider/register",
                     "/provider/specializations",
                     "/provider/check-email",
                     "/provider/check-phone",
                     "/provider/check-license",
                     "/patient/register",
-                    "/patient/login",
                     "/patient/check-email",
                     "/patient/check-phone",
                     "/actuator/health",

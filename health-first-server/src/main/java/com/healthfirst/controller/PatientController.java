@@ -1,11 +1,8 @@
 package com.healthfirst.controller;
 
-import com.healthfirst.dto.PatientLoginRequest;
-import com.healthfirst.dto.PatientLoginResponse;
 import com.healthfirst.dto.PatientRegistrationRequest;
 import com.healthfirst.dto.PatientRegistrationResponse;
 import com.healthfirst.middleware.RateLimitingService;
-import com.healthfirst.service.AuthService;
 import com.healthfirst.service.PatientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -28,16 +25,13 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/patient")
-@Tag(name = "Patient Management", description = "APIs for patient registration, authentication and management with HIPAA compliance")
+@Tag(name = "Patient Management", description = "APIs for patient registration and management with HIPAA compliance")
 public class PatientController {
 
     private static final Logger logger = LoggerFactory.getLogger(PatientController.class);
 
     @Autowired
     private PatientService patientService;
-
-    @Autowired
-    private AuthService authService;
 
     @Autowired
     private RateLimitingService rateLimitingService;
@@ -109,77 +103,6 @@ public class PatientController {
                         getClientIpAddress(httpRequest), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(PatientRegistrationResponse.error("Registration failed. Please try again later.", "REGISTRATION_ERROR"));
-        }
-    }
-
-    @Operation(summary = "Patient login", 
-               description = "Authenticate patient with email and password, returns JWT access token (30 min expiry)")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Login successful"),
-        @ApiResponse(responseCode = "400", description = "Bad request - validation errors"),
-        @ApiResponse(responseCode = "401", description = "Invalid credentials"),
-        @ApiResponse(responseCode = "403", description = "Account inactive"),
-        @ApiResponse(responseCode = "423", description = "Account locked due to failed attempts"),
-        @ApiResponse(responseCode = "429", description = "Too many requests - rate limit exceeded"),
-        @ApiResponse(responseCode = "500", description = "Internal server error")
-    })
-    @PostMapping("/login")
-    public ResponseEntity<?> loginPatient(
-            @Valid @RequestBody PatientLoginRequest request,
-            BindingResult bindingResult,
-            HttpServletRequest httpRequest) {
-
-        try {
-            // Get client IP address for rate limiting and logging
-            String clientIp = getClientIpAddress(httpRequest);
-            logger.info("Patient login attempt from IP: {}", clientIp);
-
-            // Check rate limiting
-            if (!rateLimitingService.isRegistrationAllowed(clientIp)) {
-                int remaining = rateLimitingService.getRemainingAttempts(clientIp);
-                logger.warn("Rate limit exceeded for IP: {}, remaining attempts: {}", clientIp, remaining);
-                
-                Map<String, Object> errorResponse = new HashMap<>();
-                errorResponse.put("success", false);
-                errorResponse.put("message", "Too many login attempts. Please try again later.");
-                errorResponse.put("error_code", "RATE_LIMIT_EXCEEDED");
-                errorResponse.put("remainingAttempts", remaining);
-                
-                return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(errorResponse);
-            }
-
-            // Check for binding errors (Bean Validation)
-            if (bindingResult.hasErrors()) {
-                List<String> errors = bindingResult.getFieldErrors().stream()
-                    .map(error -> error.getField() + ": " + error.getDefaultMessage())
-                    .collect(Collectors.toList());
-                
-                logger.warn("Validation errors in patient login request: {}", errors);
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
-                    PatientLoginResponse.error("Validation failed: " + String.join(", ", errors), "VALIDATION_ERROR")
-                );
-            }
-
-            // Process login
-            PatientLoginResponse response = authService.loginPatient(request, clientIp);
-            
-            if (response.isSuccess()) {
-                logger.info("Patient login successful for patient ID: {}", 
-                           response.getData() != null ? response.getData().getPatient().getId() : "unknown");
-                return ResponseEntity.ok(response);
-            } else {
-                logger.warn("Patient login failed: {}", response.getMessage());
-                
-                // Determine appropriate HTTP status code based on error
-                HttpStatus status = determineHttpStatusFromLoginError(response.getErrorCode());
-                return ResponseEntity.status(status).body(response);
-            }
-
-        } catch (Exception e) {
-            logger.error("Unexpected error during patient login from IP: {}", 
-                        getClientIpAddress(httpRequest), e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(PatientLoginResponse.error("Login failed. Please try again later.", "LOGIN_ERROR"));
         }
     }
 
@@ -268,20 +191,6 @@ public class PatientController {
             case "EMAIL_ALREADY_EXISTS", "PHONE_ALREADY_EXISTS" -> HttpStatus.CONFLICT;
             case "RATE_LIMIT_EXCEEDED" -> HttpStatus.TOO_MANY_REQUESTS;
             case "AGE_RESTRICTION" -> HttpStatus.UNPROCESSABLE_ENTITY;
-            default -> HttpStatus.INTERNAL_SERVER_ERROR;
-        };
-    }
-
-    /**
-     * Determine HTTP status code based on login error code
-     */
-    private HttpStatus determineHttpStatusFromLoginError(String errorCode) {
-        return switch (errorCode) {
-            case "VALIDATION_ERROR" -> HttpStatus.BAD_REQUEST;
-            case "INVALID_CREDENTIALS" -> HttpStatus.UNAUTHORIZED;
-            case "ACCOUNT_INACTIVE" -> HttpStatus.FORBIDDEN;
-            case "ACCOUNT_LOCKED" -> HttpStatus.LOCKED;
-            case "RATE_LIMIT_EXCEEDED" -> HttpStatus.TOO_MANY_REQUESTS;
             default -> HttpStatus.INTERNAL_SERVER_ERROR;
         };
     }

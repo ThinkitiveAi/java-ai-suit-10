@@ -3,6 +3,8 @@ package com.healthfirst.controller;
 import com.healthfirst.dto.ProviderLoginRequest;
 import com.healthfirst.dto.ProviderLoginResponse;
 import com.healthfirst.dto.RefreshTokenRequest;
+import com.healthfirst.dto.UnifiedLoginRequest;
+import com.healthfirst.dto.UnifiedLoginResponse;
 import com.healthfirst.middleware.RateLimitingService;
 import com.healthfirst.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,8 +27,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/provider")
-@Tag(name = "Provider Authentication", description = "APIs for provider login, logout, and token management")
+@RequestMapping("/auth")
+@Tag(name = "Authentication", description = "Unified APIs for user authentication and token management")
 public class AuthController {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
@@ -37,8 +39,8 @@ public class AuthController {
     @Autowired
     private RateLimitingService rateLimitingService;
 
-    @Operation(summary = "Provider login", 
-               description = "Authenticate provider with email/phone and password, returns JWT tokens")
+    @Operation(summary = "Unified login", 
+               description = "Authenticate users (patients and providers) with auto-detection of user type based on identifier")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Login successful"),
         @ApiResponse(responseCode = "400", description = "Bad request - validation errors"),
@@ -49,8 +51,8 @@ public class AuthController {
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping("/login")
-    public ResponseEntity<?> loginProvider(
-            @Valid @RequestBody ProviderLoginRequest request,
+    public ResponseEntity<?> unifiedLogin(
+            @Valid @RequestBody UnifiedLoginRequest request,
             BindingResult bindingResult,
             HttpServletRequest httpRequest) {
 
@@ -58,13 +60,12 @@ public class AuthController {
             // Get client IP address
             String clientIp = getClientIpAddress(httpRequest);
             String userAgent = httpRequest.getHeader("User-Agent");
-            
-            logger.info("Login attempt for identifier: {} from IP: {}", request.getIdentifier(), clientIp);
+            logger.info("Unified login attempt from IP: {}", clientIp);
 
-            // Check rate limiting for login attempts
+            // Check rate limiting
             if (!rateLimitingService.isRegistrationAllowed(clientIp)) {
                 int remaining = rateLimitingService.getRemainingAttempts(clientIp);
-                logger.warn("Rate limit exceeded for login attempts from IP: {}", clientIp);
+                logger.warn("Rate limit exceeded for IP: {}, remaining attempts: {}", clientIp, remaining);
                 
                 Map<String, Object> errorResponse = new HashMap<>();
                 errorResponse.put("success", false);
@@ -75,27 +76,27 @@ public class AuthController {
                 return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(errorResponse);
             }
 
-            // Check for validation errors
+            // Check for binding errors (Bean Validation)
             if (bindingResult.hasErrors()) {
                 List<String> errors = bindingResult.getFieldErrors().stream()
                     .map(error -> error.getField() + ": " + error.getDefaultMessage())
                     .collect(Collectors.toList());
                 
-                logger.warn("Validation errors in login request: {}", errors);
-                return ResponseEntity.badRequest().body(
-                    ProviderLoginResponse.error("Validation failed: " + String.join(", ", errors), "VALIDATION_ERROR")
+                logger.warn("Validation errors in unified login request: {}", errors);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                    UnifiedLoginResponse.error("Validation failed: " + String.join(", ", errors), "VALIDATION_ERROR")
                 );
             }
 
-            // Attempt login
-            ProviderLoginResponse response = authService.loginProvider(request, userAgent, clientIp);
+            // Process unified login
+            UnifiedLoginResponse response = authService.unifiedLogin(request, userAgent, clientIp);
             
             if (response.isSuccess()) {
-                logger.info("Login successful for identifier: {}", request.getIdentifier());
+                logger.info("Unified login successful for user type: {}", 
+                           response.getData() != null ? response.getData().getUserType() : "unknown");
                 return ResponseEntity.ok(response);
             } else {
-                logger.warn("Login failed for identifier: {}, reason: {}", 
-                           request.getIdentifier(), response.getMessage());
+                logger.warn("Unified login failed: {}", response.getMessage());
                 
                 // Determine appropriate HTTP status code based on error
                 HttpStatus status = determineHttpStatusFromError(response.getErrorCode());
@@ -103,17 +104,89 @@ public class AuthController {
             }
 
         } catch (Exception e) {
-            logger.error("Unexpected error during login for identifier: {}", request.getIdentifier(), e);
+            logger.error("Unexpected error during unified login from IP: {}", 
+                        getClientIpAddress(httpRequest), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(ProviderLoginResponse.error("Login failed. Please try again later.", "LOGIN_ERROR"));
+                .body(UnifiedLoginResponse.error("Login failed. Please try again later.", "LOGIN_ERROR"));
         }
     }
 
+    @Operation(summary = "Provider login (backward compatible)", 
+               description = "Legacy provider login endpoint for backward compatibility. Use /auth/login for new implementations.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Login successful"),
+        @ApiResponse(responseCode = "400", description = "Bad request - validation errors"),
+        @ApiResponse(responseCode = "401", description = "Invalid credentials"),
+        @ApiResponse(responseCode = "403", description = "Account not verified or inactive"),
+        @ApiResponse(responseCode = "423", description = "Account locked due to failed attempts"),
+        @ApiResponse(responseCode = "429", description = "Too many requests - rate limit exceeded"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
+    @PostMapping("/provider/login")
+    public ResponseEntity<?> providerLoginLegacy(
+            @Valid @RequestBody ProviderLoginRequest request,
+            BindingResult bindingResult,
+            HttpServletRequest httpRequest) {
+
+        // Convert provider request to unified request
+        UnifiedLoginRequest unifiedRequest = new UnifiedLoginRequest(
+            request.getIdentifier(),
+            request.getPassword(),
+            request.getRememberMe(),
+            "provider" // Explicitly set user type for provider login
+        );
+
+        // Delegate to unified login
+        ResponseEntity<?> unifiedResponse = unifiedLogin(unifiedRequest, bindingResult, httpRequest);
+        
+        // Convert unified response back to provider response for backward compatibility
+        if (unifiedResponse.getBody() instanceof UnifiedLoginResponse) {
+            UnifiedLoginResponse unified = (UnifiedLoginResponse) unifiedResponse.getBody();
+            return ResponseEntity.status(unifiedResponse.getStatusCode())
+                .body(convertToProviderResponse(unified));
+        }
+
+        return unifiedResponse;
+    }
+
+    /**
+     * Convert unified response to provider response for backward compatibility
+     */
+    private ProviderLoginResponse convertToProviderResponse(UnifiedLoginResponse unified) {
+        if (unified.isSuccess() && unified.getData() != null) {
+            UnifiedLoginResponse.LoginData loginData = unified.getData();
+            
+            if (loginData.getUser() instanceof UnifiedLoginResponse.ProviderData) {
+                UnifiedLoginResponse.ProviderData providerData = (UnifiedLoginResponse.ProviderData) loginData.getUser();
+                
+                ProviderLoginResponse.ProviderData legacyProviderData = new ProviderLoginResponse.ProviderData(
+                    providerData.getId(),
+                    providerData.getFirstName(),
+                    providerData.getLastName(),
+                    providerData.getEmail(),
+                    providerData.getSpecialization(),
+                    providerData.getVerificationStatus(),
+                    providerData.isActive()
+                );
+
+                ProviderLoginResponse.LoginData legacyLoginData = new ProviderLoginResponse.LoginData(
+                    loginData.getAccessToken(),
+                    loginData.getRefreshToken(),
+                    loginData.getExpiresIn(),
+                    legacyProviderData
+                );
+
+                return ProviderLoginResponse.success(legacyLoginData);
+            }
+        }
+        
+        return ProviderLoginResponse.error(unified.getMessage(), unified.getErrorCode());
+    }
+
     @Operation(summary = "Refresh access token", 
-               description = "Generate new access token using refresh token")
+               description = "Generate new access token using valid refresh token")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Token refreshed successfully"),
-        @ApiResponse(responseCode = "400", description = "Bad request - validation errors"),
         @ApiResponse(responseCode = "401", description = "Invalid refresh token"),
         @ApiResponse(responseCode = "403", description = "Account status changed"),
         @ApiResponse(responseCode = "500", description = "Internal server error")
@@ -125,6 +198,7 @@ public class AuthController {
             HttpServletRequest httpRequest) {
 
         try {
+            // Get client information
             String clientIp = getClientIpAddress(httpRequest);
             String userAgent = httpRequest.getHeader("User-Agent");
             
@@ -151,7 +225,12 @@ public class AuthController {
             } else {
                 logger.warn("Token refresh failed: {}", response.getMessage());
                 
-                HttpStatus status = determineHttpStatusFromError(response.getErrorCode());
+                HttpStatus status = switch (response.getErrorCode()) {
+                    case "INVALID_REFRESH_TOKEN" -> HttpStatus.UNAUTHORIZED;
+                    case "ACCOUNT_STATUS_CHANGED" -> HttpStatus.FORBIDDEN;
+                    default -> HttpStatus.INTERNAL_SERVER_ERROR;
+                };
+                
                 return ResponseEntity.status(status).body(response);
             }
 
@@ -163,121 +242,74 @@ public class AuthController {
     }
 
     @Operation(summary = "Logout provider", 
-               description = "Revoke refresh token and logout provider")
+               description = "Revoke refresh token and logout current session")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Logout successful"),
-        @ApiResponse(responseCode = "400", description = "Bad request - validation errors"),
+        @ApiResponse(responseCode = "400", description = "Bad request"),
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping("/logout")
-    public ResponseEntity<Map<String, Object>> logoutProvider(
-            @Valid @RequestBody RefreshTokenRequest request,
-            BindingResult bindingResult) {
-
+    public ResponseEntity<?> logout(@RequestBody Map<String, String> request) {
         try {
-            logger.info("Logout attempt");
-
-            Map<String, Object> response = new HashMap<>();
-
-            // Check for validation errors
-            if (bindingResult.hasErrors()) {
-                List<String> errors = bindingResult.getFieldErrors().stream()
-                    .map(error -> error.getField() + ": " + error.getDefaultMessage())
-                    .collect(Collectors.toList());
-                
-                logger.warn("Validation errors in logout request: {}", errors);
-                response.put("success", false);
-                response.put("message", "Validation failed: " + String.join(", ", errors));
-                response.put("error_code", "VALIDATION_ERROR");
-                
-                return ResponseEntity.badRequest().body(response);
+            String refreshToken = request.get("refreshToken");
+            
+            if (refreshToken == null || refreshToken.trim().isEmpty()) {
+                return ResponseEntity.badRequest().body(
+                    Map.of("success", false, "message", "Refresh token is required")
+                );
             }
 
-            // Attempt logout
-            boolean success = authService.logoutProvider(request.getRefreshToken());
+            boolean success = authService.logoutProvider(refreshToken);
             
             if (success) {
-                logger.info("Logout successful");
-                response.put("success", true);
-                response.put("message", "Logout successful");
-                return ResponseEntity.ok(response);
+                return ResponseEntity.ok(Map.of("success", true, "message", "Logout successful"));
             } else {
-                logger.warn("Logout failed");
-                response.put("success", false);
-                response.put("message", "Logout failed");
-                response.put("error_code", "LOGOUT_ERROR");
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                    Map.of("success", false, "message", "Logout failed")
+                );
             }
 
         } catch (Exception e) {
-            logger.error("Unexpected error during logout", e);
-            
-            Map<String, Object> errorResponse = new HashMap<>();
-            errorResponse.put("success", false);
-            errorResponse.put("message", "Logout failed. Please try again later.");
-            errorResponse.put("error_code", "LOGOUT_ERROR");
-            
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+            logger.error("Error during logout", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                Map.of("success", false, "message", "Logout failed")
+            );
         }
     }
 
     @Operation(summary = "Logout all sessions", 
                description = "Revoke all refresh tokens for the provider")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "All sessions logged out successfully"),
-        @ApiResponse(responseCode = "400", description = "Bad request - validation errors"),
-        @ApiResponse(responseCode = "401", description = "Invalid refresh token"),
+        @ApiResponse(responseCode = "200", description = "All sessions logged out"),
+        @ApiResponse(responseCode = "400", description = "Bad request"),
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping("/logout-all")
-    public ResponseEntity<Map<String, Object>> logoutAllSessions(
-            @Valid @RequestBody RefreshTokenRequest request,
-            BindingResult bindingResult) {
-
+    public ResponseEntity<?> logoutAll(@RequestBody Map<String, String> request) {
         try {
-            logger.info("Logout all sessions attempt");
-
-            Map<String, Object> response = new HashMap<>();
-
-            // Check for validation errors
-            if (bindingResult.hasErrors()) {
-                List<String> errors = bindingResult.getFieldErrors().stream()
-                    .map(error -> error.getField() + ": " + error.getDefaultMessage())
-                    .collect(Collectors.toList());
-                
-                logger.warn("Validation errors in logout all request: {}", errors);
-                response.put("success", false);
-                response.put("message", "Validation failed: " + String.join(", ", errors));
-                response.put("error_code", "VALIDATION_ERROR");
-                
-                return ResponseEntity.badRequest().body(response);
+            String refreshToken = request.get("refreshToken");
+            
+            if (refreshToken == null || refreshToken.trim().isEmpty()) {
+                return ResponseEntity.badRequest().body(
+                    Map.of("success", false, "message", "Refresh token is required")
+                );
             }
 
-            // Attempt logout all
-            boolean success = authService.logoutAllSessions(request.getRefreshToken());
+            boolean success = authService.logoutAllSessions(refreshToken);
             
             if (success) {
-                logger.info("Logout all sessions successful");
-                response.put("success", true);
-                response.put("message", "All sessions logged out successfully");
-                return ResponseEntity.ok(response);
+                return ResponseEntity.ok(Map.of("success", true, "message", "All sessions logged out"));
             } else {
-                logger.warn("Logout all sessions failed");
-                response.put("success", false);
-                response.put("message", "Invalid refresh token");
-                response.put("error_code", "INVALID_REFRESH_TOKEN");
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                    Map.of("success", false, "message", "Logout all failed")
+                );
             }
 
         } catch (Exception e) {
-            logger.error("Unexpected error during logout all sessions", e);
-            
-            Map<String, Object> errorResponse = new HashMap<>();
-            errorResponse.put("success", false);
-            errorResponse.put("message", "Logout all failed. Please try again later.");
-            errorResponse.put("error_code", "LOGOUT_ALL_ERROR");
-            
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+            logger.error("Error during logout all", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                Map.of("success", false, "message", "Logout all failed")
+            );
         }
     }
 

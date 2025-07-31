@@ -1,3 +1,4 @@
+/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/UnifiedLoginRequest.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/entity/RefreshToken.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/enums/VerificationStatus.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/controller/AuthController.java
@@ -20,6 +21,7 @@
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/config/SecurityConfig.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/repository/PatientRepository.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/config/SwaggerConfig.java
+/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/UnifiedLoginResponse.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/entity/embedded/ClinicAddress.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/ProviderLoginResponse.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/entity/embedded/InsuranceInfo.java
