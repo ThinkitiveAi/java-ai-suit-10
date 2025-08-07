@@ -50,6 +50,11 @@ app:
     registration:
       capacity: 5
       refill-period: 3600 # 1 hour in seconds
+
+# Global timezone configuration for healthcare app
+  timezone:
+    default: UTC
+    storage: UTC
       
 # Swagger Configuration
 springdoc:

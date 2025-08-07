@@ -2,6 +2,8 @@ package com.healthfirst.repository;
 
 import com.healthfirst.entity.AppointmentSlot;
 import com.healthfirst.enums.AppointmentType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -173,4 +175,64 @@ public interface AppointmentSlotRepository extends JpaRepository<AppointmentSlot
     List<AppointmentSlot> findExpiringSoonSlots(
             @Param("currentTime") LocalDateTime currentTime,
             @Param("expiryTime") LocalDateTime expiryTime);
+
+    /**
+     * Find upcoming appointments for a patient and/or provider
+     */
+    @Query("SELECT s FROM AppointmentSlot s WHERE " +
+           "(:patientId IS NULL OR s.patient.id = :patientId) AND " +
+           "(:providerId IS NULL OR s.provider.id = :providerId) AND " +
+           "s.startDateTime > :now AND s.isActive = true " +
+           "AND s.isBooked = true AND s.cancelledAt IS NULL")
+    Page<AppointmentSlot> findUpcomingAppointments(
+            @Param("patientId") UUID patientId,
+            @Param("providerId") UUID providerId,
+            @Param("now") LocalDateTime now,
+            Pageable pageable);
+
+    /**
+     * Find past appointments for a patient and/or provider
+     */
+    @Query("SELECT s FROM AppointmentSlot s WHERE " +
+           "(:patientId IS NULL OR s.patient.id = :patientId) AND " +
+           "(:providerId IS NULL OR s.provider.id = :providerId) AND " +
+           "s.endDateTime <= :now AND s.isActive = true " +
+           "AND s.isBooked = true AND s.cancelledAt IS NULL")
+    Page<AppointmentSlot> findPastAppointments(
+            @Param("patientId") UUID patientId,
+            @Param("providerId") UUID providerId,
+            @Param("now") LocalDateTime now,
+            Pageable pageable);
+
+    /**
+     * Find cancelled appointments for a patient and/or provider
+     */
+    @Query("SELECT s FROM AppointmentSlot s WHERE " +
+           "(:patientId IS NULL OR s.patient.id = :patientId) AND " +
+           "(:providerId IS NULL OR s.provider.id = :providerId) AND " +
+           "(:startDateTime IS NULL OR s.startDateTime >= :startDateTime) AND " +
+           "(:endDateTime IS NULL OR s.startDateTime < :endDateTime) AND " +
+           "s.isActive = true AND s.cancelledAt IS NOT NULL")
+    Page<AppointmentSlot> findCancelledAppointments(
+            @Param("patientId") UUID patientId,
+            @Param("providerId") UUID providerId,
+            @Param("startDateTime") LocalDateTime startDateTime,
+            @Param("endDateTime") LocalDateTime endDateTime,
+            Pageable pageable);
+
+    /**
+     * Find all appointments for a patient and/or provider
+     */
+    @Query("SELECT s FROM AppointmentSlot s WHERE " +
+           "(:patientId IS NULL OR s.patient.id = :patientId) AND " +
+           "(:providerId IS NULL OR s.provider.id = :providerId) AND " +
+           "(:startDateTime IS NULL OR s.startDateTime >= :startDateTime) AND " +
+           "(:endDateTime IS NULL OR s.startDateTime < :endDateTime) AND " +
+           "s.isActive = true AND s.isBooked = true")
+    Page<AppointmentSlot> findAllAppointments(
+            @Param("patientId") UUID patientId,
+            @Param("providerId") UUID providerId,
+            @Param("startDateTime") LocalDateTime startDateTime,
+            @Param("endDateTime") LocalDateTime endDateTime,
+            Pageable pageable);
 } 

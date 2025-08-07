@@ -350,6 +350,25 @@ public class ProviderAvailabilityService {
         availability.setMaxConsecutiveSlots(request.getMaxConsecutiveSlots());
         availability.setBufferTimeMinutes(request.getBufferTimeMinutes());
 
+        // Set all new UI-focused availability fields
+        availability.setIsBlocked(request.getBlocked());
+        availability.setBlockReason(request.getBlockReason());
+        availability.setConsultationType(request.getConsultationType());
+        availability.setAllowWalkIns(request.getAllowWalkIns());
+        availability.setAdvanceBookingDays(request.getAdvanceBookingDays());
+        availability.setSameDayBooking(request.getSameDayBooking());
+        availability.setConsultationDurationMinutes(request.getConsultationDurationMinutes());
+        availability.setBreakBetweenAppointments(request.getBreakBetweenAppointments());
+        availability.setMaxAppointmentsPerDay(request.getMaxAppointmentsPerDay());
+        availability.setConsultationFee(request.getConsultationFee());
+        availability.setEmergencyAvailable(request.getEmergencyAvailable());
+        availability.setNotesForPatients(request.getNotesForPatients());
+        availability.setRequiresConfirmation(request.getRequiresConfirmation());
+        availability.setSendReminders(request.getSendReminders());
+        availability.setReminderTimeHours(request.getReminderTimeHours());
+        availability.setAllowCancellation(request.getAllowCancellation());
+        availability.setCancellationHoursBefore(request.getCancellationHoursBefore());
+
         // Convert recurrence days to JSON string
         if (request.getRecurrenceDaysOfWeek() != null) {
             availability.setRecurrenceDaysOfWeek(request.getRecurrenceDaysOfWeek().toString());

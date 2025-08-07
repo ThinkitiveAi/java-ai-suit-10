@@ -1,0 +1,105 @@
+-------------------------------------------------------------------------------
+Test set: com.healthfirst.service.UnifiedAuthServiceTest
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.225 s <<< FAILURE! -- in com.healthfirst.service.UnifiedAuthServiceTest
+com.healthfirst.service.UnifiedAuthServiceTest.testAutoDetectUserType_ProviderFound -- Time elapsed: 0.025 s <<< FAILURE!
+org.mockito.exceptions.verification.TooManyActualInvocations: 
+
+providerRepository.findByEmail(
+    "test@example.com"
+);
+Wanted 1 time:
+-> at com.healthfirst.service.UnifiedAuthServiceTest.testAutoDetectUserType_ProviderFound(UnifiedAuthServiceTest.java:390)
+But was 2 times:
+-> at com.healthfirst.service.AuthService.findProviderByIdentifier(AuthService.java:247)
+-> at com.healthfirst.service.AuthService.findProviderByIdentifier(AuthService.java:247)
+
+
+	at com.healthfirst.service.UnifiedAuthServiceTest.testAutoDetectUserType_ProviderFound(UnifiedAuthServiceTest.java:390)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.healthfirst.service.UnifiedAuthServiceTest.testUnifiedLogin_ProviderAutoDetection_Success -- Time elapsed: 0.006 s <<< FAILURE!
+org.mockito.exceptions.verification.TooManyActualInvocations: 
+
+providerRepository.findByEmail(
+    "john.smith@example.com"
+);
+Wanted 1 time:
+-> at com.healthfirst.service.UnifiedAuthServiceTest.testUnifiedLogin_ProviderAutoDetection_Success(UnifiedAuthServiceTest.java:123)
+But was 2 times:
+-> at com.healthfirst.service.AuthService.findProviderByIdentifier(AuthService.java:247)
+-> at com.healthfirst.service.AuthService.findProviderByIdentifier(AuthService.java:247)
+
+
+	at com.healthfirst.service.UnifiedAuthServiceTest.testUnifiedLogin_ProviderAutoDetection_Success(UnifiedAuthServiceTest.java:123)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.healthfirst.service.UnifiedAuthServiceTest.testUnifiedLogin_ProviderByPhoneNumber -- Time elapsed: 0.012 s <<< FAILURE!
+Wanted but not invoked:
+providerRepository.findByEmail(
+    "+1234567890"
+);
+-> at com.healthfirst.service.UnifiedAuthServiceTest.testUnifiedLogin_ProviderByPhoneNumber(UnifiedAuthServiceTest.java:361)
+
+However, there were exactly 3 interactions with this mock:
+providerRepository.findByPhoneNumber(
+    "+1234567890"
+);
+-> at com.healthfirst.service.AuthService.findProviderByIdentifier(AuthService.java:249)
+
+providerRepository.findByPhoneNumber(
+    "+1234567890"
+);
+-> at com.healthfirst.service.AuthService.findProviderByIdentifier(AuthService.java:249)
+
+providerRepository.save(
+    Provider{id=fe4488e4-6469-4764-968f-9b0e3b964473, firstName='Dr. John', lastName='Smith', email='john.smith@example.com', phoneNumber='+1234567890', specialization='Cardiology', licenseNumber='null', yearsOfExperience=null, verificationStatus=VERIFIED, isActive=true, failedLoginAttempts=0, createdAt=null, updatedAt=null}
+);
+-> at com.healthfirst.service.AuthService.loginProvider(AuthService.java:112)
+
+
+	at com.healthfirst.service.UnifiedAuthServiceTest.testUnifiedLogin_ProviderByPhoneNumber(UnifiedAuthServiceTest.java:361)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.healthfirst.service.UnifiedAuthServiceTest.testAutoDetectUserType_PatientFound -- Time elapsed: 0.004 s <<< FAILURE!
+org.mockito.exceptions.verification.TooManyActualInvocations: 
+
+patientRepository.findByEmail(
+    "test@example.com"
+);
+Wanted 1 time:
+-> at com.healthfirst.service.UnifiedAuthServiceTest.testAutoDetectUserType_PatientFound(UnifiedAuthServiceTest.java:420)
+But was 2 times:
+-> at com.healthfirst.service.AuthService.detectUserType(AuthService.java:494)
+-> at com.healthfirst.service.AuthService.loginPatient(AuthService.java:307)
+
+
+	at com.healthfirst.service.UnifiedAuthServiceTest.testAutoDetectUserType_PatientFound(UnifiedAuthServiceTest.java:420)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.healthfirst.service.UnifiedAuthServiceTest.testUnifiedLogin_PatientAutoDetection_Success -- Time elapsed: 0.004 s <<< FAILURE!
+org.mockito.exceptions.verification.TooManyActualInvocations: 
+
+patientRepository.findByEmail(
+    "jane.doe@example.com"
+);
+Wanted 1 time:
+-> at com.healthfirst.service.UnifiedAuthServiceTest.testUnifiedLogin_PatientAutoDetection_Success(UnifiedAuthServiceTest.java:158)
+But was 2 times:
+-> at com.healthfirst.service.AuthService.detectUserType(AuthService.java:494)
+-> at com.healthfirst.service.AuthService.loginPatient(AuthService.java:307)
+
+
+	at com.healthfirst.service.UnifiedAuthServiceTest.testUnifiedLogin_PatientAutoDetection_Success(UnifiedAuthServiceTest.java:158)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+

@@ -1,3 +1,5 @@
+/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/AppointmentListRequest.java
+/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/controller/ProviderManagementController.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/RefreshTokenRequest.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/controller/ProviderAvailabilityController.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/middleware/AuthenticationMiddleware.java
@@ -9,6 +11,7 @@
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/service/PatientService.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/middleware/RateLimitingService.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/service/ProviderService.java
+/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/AppointmentListResponse.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/repository/PatientRepository.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/UnifiedLoginResponse.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/AvailabilityResponse.java
@@ -22,8 +25,10 @@
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/ProviderRegistrationResponse.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/controller/ProviderController.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/controller/PatientController.java
+/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/controller/AppointmentController.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/util/PasswordUtil.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/UnifiedLoginRequest.java
+/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/config/TimezoneConfig.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/entity/RefreshToken.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/enums/VerificationStatus.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/controller/AuthController.java
@@ -41,12 +46,14 @@
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/config/SwaggerConfig.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/controller/AvailabilitySearchController.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/ProviderLoginResponse.java
+/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/AppointmentBookingResponse.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/entity/embedded/InsuranceInfo.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/enums/RecurrencePattern.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/service/EmailService.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/entity/AppointmentSlot.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/PatientLoginRequest.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/util/JwtUtil.java
+/home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/AppointmentBookingRequest.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/exception/GlobalExceptionHandler.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/CreateAvailabilityRequest.java
 /home/ttpl-lnvl15-0294/Desktop/Practice/cursor_session_24_07_25/java-ai-suit-10/health-first-server/src/main/java/com/healthfirst/dto/PatientLoginResponse.java

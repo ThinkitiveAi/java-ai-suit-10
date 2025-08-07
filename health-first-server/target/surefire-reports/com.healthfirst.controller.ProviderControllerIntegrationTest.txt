@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.healthfirst.controller.ProviderControllerIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.377 s -- in com.healthfirst.controller.ProviderControllerIntegrationTest

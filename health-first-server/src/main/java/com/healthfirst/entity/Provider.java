@@ -77,6 +77,9 @@ public class Provider {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
 
+    @Column(name = "profile_image")
+    private String profileImage;
+
     // Authentication security fields
     @Column(name = "failed_login_attempts", nullable = false)
     private Integer failedLoginAttempts = 0;
@@ -216,6 +219,14 @@ public class Provider {
 
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 
     public Integer getFailedLoginAttempts() {

@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -120,6 +123,58 @@ public class ProviderService {
      */
     public boolean licenseExists(String licenseNumber) {
         return providerRepository.existsByLicenseNumber(licenseNumber);
+    }
+
+    /**
+     * Get all active providers for selection
+     */
+    public List<Map<String, Object>> getAllActiveProviders() {
+        List<Provider> providers = providerRepository.findByIsActiveTrue();
+        
+        return providers.stream()
+            .map(provider -> {
+                Map<String, Object> providerData = new HashMap<>();
+                providerData.put("id", provider.getId());
+                providerData.put("firstName", provider.getFirstName());
+                providerData.put("lastName", provider.getLastName());
+                
+                // Add formatted display name for UI
+                String displayName = "Dr. " + provider.getFirstName() + " " + provider.getLastName();
+                providerData.put("displayName", displayName);
+                
+                providerData.put("email", provider.getEmail());
+                providerData.put("phoneNumber", provider.getPhoneNumber());
+                providerData.put("specialization", provider.getSpecialization());
+                providerData.put("yearsOfExperience", provider.getYearsOfExperience());
+                providerData.put("verificationStatus", provider.getVerificationStatus());
+                providerData.put("licenseNumber", provider.getLicenseNumber());
+                providerData.put("isActive", provider.getIsActive());
+                
+                // Add creation and last updated timestamps in UTC
+                providerData.put("createdAt", provider.getCreatedAt());
+                providerData.put("updatedAt", provider.getUpdatedAt());
+                
+                if (provider.getClinicAddress() != null) {
+                    Map<String, Object> addressData = new HashMap<>();
+                    addressData.put("street", provider.getClinicAddress().getStreet());
+                    addressData.put("city", provider.getClinicAddress().getCity());
+                    addressData.put("state", provider.getClinicAddress().getState());
+                    addressData.put("zip", provider.getClinicAddress().getZip());
+                    
+                    // Add formatted address for UI display
+                    String formattedAddress = String.format("%s, %s, %s %s",
+                        provider.getClinicAddress().getStreet(),
+                        provider.getClinicAddress().getCity(),
+                        provider.getClinicAddress().getState(),
+                        provider.getClinicAddress().getZip());
+                    addressData.put("formatted", formattedAddress);
+                    
+                    providerData.put("clinicAddress", addressData);
+                }
+                
+                return providerData;
+            })
+            .collect(Collectors.toList());
     }
 
     private void sanitizeRequest(ProviderRegistrationRequest request) {

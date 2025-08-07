@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.healthfirst.service.ProviderAvailabilityServiceTest
 -------------------------------------------------------------------------------
-Tests run: 22, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 1.236 s <<< FAILURE! -- in com.healthfirst.service.ProviderAvailabilityServiceTest
-com.healthfirst.service.ProviderAvailabilityServiceTest.testCreateAvailability_ProviderNotFound -- Time elapsed: 0.018 s <<< FAILURE!
+Tests run: 22, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 0.381 s <<< FAILURE! -- in com.healthfirst.service.ProviderAvailabilityServiceTest
+com.healthfirst.service.ProviderAvailabilityServiceTest.testCreateAvailability_ProviderNotFound -- Time elapsed: 0.005 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -15,7 +15,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 
-com.healthfirst.service.ProviderAvailabilityServiceTest.testConcurrencyHandling_OverlapDetection -- Time elapsed: 0.006 s <<< FAILURE!
+com.healthfirst.service.ProviderAvailabilityServiceTest.testConcurrencyHandling_OverlapDetection -- Time elapsed: 0.004 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <OVERLAP_ERROR> but was: <CREATE_ERROR>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -28,7 +28,7 @@ org.opentest4j.AssertionFailedError: expected: <OVERLAP_ERROR> but was: <CREATE_
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 
-com.healthfirst.service.ProviderAvailabilityServiceTest.testGetProviderAvailability_ProviderNotFound -- Time elapsed: 0.004 s <<< FAILURE!
+com.healthfirst.service.ProviderAvailabilityServiceTest.testGetProviderAvailability_ProviderNotFound -- Time elapsed: 0.008 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.RuntimeException>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
@@ -40,18 +40,18 @@ org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected:
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 Caused by: java.lang.RuntimeException: Failed to fetch availability
 	at com.healthfirst.service.ProviderAvailabilityService.getProviderAvailability(ProviderAvailabilityService.java:105)
-	at com.healthfirst.service.ProviderAvailabilityServiceTest.lambda$testGetProviderAvailability_ProviderNotFound$2(ProviderAvailabilityServiceTest.java:263)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.lambda$2(ProviderAvailabilityServiceTest.java:263)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
 	... 6 more
-Caused by: java.lang.IllegalArgumentException: Provider not found: c91a8e04-771f-4f59-80a9-d504a9dede13
+Caused by: java.lang.IllegalArgumentException: Provider not found: 4ec080e6-f585-4a7c-a25c-7e942b9b0d0d
 	at com.healthfirst.service.ProviderAvailabilityService.getProviderAvailability(ProviderAvailabilityService.java:93)
 	... 8 more
 
-com.healthfirst.service.ProviderAvailabilityServiceTest.testDeleteAvailability_Success -- Time elapsed: 0.007 s <<< FAILURE!
+com.healthfirst.service.ProviderAvailabilityServiceTest.testDeleteAvailability_Success -- Time elapsed: 0.006 s <<< FAILURE!
 org.mockito.exceptions.verification.TooManyActualInvocations: 
 
 slotRepository.findSlotsByProviderAvailability(
-    3ad9c6f9-6a31-4db3-be28-232004a29bb7
+    ea61ddcc-ea33-47bd-97b4-2d0be3b19d3e
 );
 Wanted 1 time:
 -> at com.healthfirst.service.ProviderAvailabilityServiceTest.testDeleteAvailability_Success(ProviderAvailabilityServiceTest.java:368)
@@ -65,7 +65,7 @@ But was 2 times:
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 
-com.healthfirst.service.ProviderAvailabilityServiceTest.testSearchAvailableSlots_InvalidDateRange -- Time elapsed: 0.003 s <<< FAILURE!
+com.healthfirst.service.ProviderAvailabilityServiceTest.testSearchAvailableSlots_InvalidDateRange -- Time elapsed: 0.005 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.RuntimeException>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
@@ -77,14 +77,14 @@ org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected:
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 Caused by: java.lang.RuntimeException: Failed to search available slots
 	at com.healthfirst.service.ProviderAvailabilityService.searchAvailableSlots(ProviderAvailabilityService.java:250)
-	at com.healthfirst.service.ProviderAvailabilityServiceTest.lambda$testSearchAvailableSlots_InvalidDateRange$3(ProviderAvailabilityServiceTest.java:437)
+	at com.healthfirst.service.ProviderAvailabilityServiceTest.lambda$3(ProviderAvailabilityServiceTest.java:437)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
 	... 6 more
 Caused by: java.lang.IllegalArgumentException: Invalid date range
 	at com.healthfirst.service.ProviderAvailabilityService.searchAvailableSlots(ProviderAvailabilityService.java:210)
 	... 8 more
 
-com.healthfirst.service.ProviderAvailabilityServiceTest.testCreateAvailability_InactiveProvider -- Time elapsed: 0.003 s <<< FAILURE!
+com.healthfirst.service.ProviderAvailabilityServiceTest.testCreateAvailability_InactiveProvider -- Time elapsed: 0.005 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)

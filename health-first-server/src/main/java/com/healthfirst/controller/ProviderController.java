@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -207,6 +208,33 @@ public class ProviderController {
             Map<String, Object> errorResponse = new HashMap<>();
             errorResponse.put("success", false);
             errorResponse.put("message", "Failed to check license availability");
+            
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+        }
+    }
+
+    @Operation(summary = "Get all providers", 
+               description = "Retrieve list of all active and verified providers for selection")
+    @ApiResponse(responseCode = "200", description = "Providers retrieved successfully")
+    @GetMapping
+    public ResponseEntity<Map<String, Object>> getAllProviders() {
+        try {
+            List<Map<String, Object>> providers = providerService.getAllActiveProviders();
+            
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", true);
+            response.put("message", "Providers retrieved successfully");
+            response.put("data", providers);
+            response.put("count", providers.size());
+            
+            return ResponseEntity.ok(response);
+            
+        } catch (Exception e) {
+            logger.error("Error retrieving providers", e);
+            
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("success", false);
+            errorResponse.put("message", "Failed to retrieve providers");
             
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
